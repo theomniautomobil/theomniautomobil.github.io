@@ -1,0 +1,1414 @@
+/*Author: Jordan Micah Bennett NetCentric Soulify 2014*/
+/* Desktops and laptops ----------- */
+
+/*All elements are widgets*/
+html
+{
+	background :  rgba(31, 107, 98, 1);
+}
+#SrmgIndexArea
+{
+	position : absolute; 
+	left : 22%; 
+	top : 22%;
+}
+
+/*Standard components*/
+	/*Fonts*/
+		/*Segoe*/
+		@font-face 
+		{
+			font-family : Segoe;
+			src : url(../fonts/segoe.ttf);
+		}
+		.LargeSegoeFontFace
+		{	
+			font-family : Segoe;
+			font-size :18px;
+		}
+		.MediumSegoeFontFace
+		{	
+			font-family : Segoe;
+			font-size :14px;
+		}
+		.SmallSegoeFontFace
+		{	
+			font-family : Segoe;
+			font-size : 11px;
+		}
+		.ExtraSmallSegoeFontFace
+		{	
+			font-family : Segoe;
+			font-size : 8px;
+		}
+	/*Fonts*/
+		/*Ostrich*/
+		@font-face 
+		{
+			font-family : Ostrich;
+			src : url(../fonts/ostrich.ttf);
+		}
+		.LargeOstrichFontFace
+		{	
+			font-family : Ostrich;
+			font-size :18px;
+		}
+		.MediumOstrichFontFace
+		{	
+			font-family : Ostrich;
+			font-size :14px;
+		}
+		.SmallOstrichFontFace
+		{	
+			font-family : Ostrich;
+			font-size : 11px;
+		}
+		.ExtraSmallOstrichFontFace
+		{	
+			font-family : Ostrich;
+			font-size : 8px;
+		}
+/*Widgets*/
+	/*Widget Areas*/
+		/*Widget, space padding is .4*/
+		/*All widgets share this feature*/
+		.WidgetArea
+		{
+			background : rgba(52, 250, 226, 1);
+			overflow : hidden; /* prevents fx such as blur, from bleeding outside of image borders */
+		}
+		/*MobileNavigationArea*/
+		/*Used for mobile navigation*/
+		/*contains : profile, playlist, social (facebook,twittr), radio*/
+		#MobileNavigationArea
+		{
+			display : none;
+		}
+		/*Hello*/
+		/*Used for members or guests*/
+		/*contains : login, create account url*/
+		#HelloWidgetArea
+		{
+			width : 258px;
+			height : 374px;
+			position : absolute; 
+			left: 0px;
+			top: 0px;
+		}
+		/*Join*/
+		/*Used for incoming members*/
+		/*contains : user name, user email, user password, user profile photo*/
+		#JoinWidgetArea
+		{
+			width : 258px;
+			height : 374px;
+			position : absolute; 
+			left : 0px; 
+			top : 0px;
+		}
+		/*Welcome*/
+		/*Used for members*/
+		/*contains : logout, site navigation*/
+		#WelcomeWidgetArea
+		{
+			width : 258px;
+			height : 374px;
+			position : absolute; 
+			left : 0px;
+			top : 0px;
+		}
+		/*WelcomePlaylist*/
+		/*Used for members*/
+		/*contains : configure, page index indicator, next page toggler, previous page toggler, back*/
+		#WelcomeWidgetPlaylistArea
+		{
+			width : 258px;
+			height : 287.8px;
+			position : absolute; 
+			left : 0px; 
+			top : 288px;
+		}
+		/*WelcomeUserInformation*/
+		/*Used for members*/
+		/*contains : help, page index indicator, next page toggler, previous page toggler, back*/
+		#WelcomeWidgetUserInformationArea
+		{
+			width : 258px;
+			height : 290px;
+			position : absolute; 
+			left : 0px; 
+			top : 288px;
+		}
+		/*WelcomeUserInformationConfiguration*/
+		/*Used for members*/
+		/*contains : save, back*/
+		#WelcomeWidgetUserInformationConfigurationArea
+		{
+			width : 258px;
+			height : 287.8px;
+			position : absolute;
+			left : 0px; 
+			top : 288px;
+		}
+		/*WelcomeUserInformationConfiguration*/
+		/*Used for members*/
+		/*contains : moods, back*/
+		#WidgetUserInformationConfigurationAreaZeroArea
+		{
+			width : 258px;
+			height : 286.8px;
+			position : absolute; 
+			left : 259.4px;
+			top: 0px;
+		}
+		/*contains : ...*/
+		#WidgetUserInformationConfigurationAreaOneArea
+		{
+			width : 258px;
+			height : 286.8px;
+			position : absolute; 
+			left : 518.4px; 
+			top: 0px;
+		}
+		/*contains : ...*/
+		#WidgetUserInformationConfigurationAreaTwoArea
+		{
+			width : 258px;
+			height : 286.8px;
+			position : absolute; 
+			left : 259.4px; 
+			top : 288.4px;
+		}
+		/*contains : ...*/
+		#WidgetUserInformationConfigurationAreaThreeArea
+		{
+			width : 258px;
+			height : 286.8px;
+			position : absolute; 
+			left : 518.4px;
+			top : 288.4px;
+		}
+		/*PlaylistGenre*/
+		/*Used for members*/
+		/*contains : playlist genre items*/
+		#WidgetPlaylistPageZeroGenreZeroArea
+		{
+			width : 258px;
+			height : 143.3px;
+		}
+		#WidgetPlaylistPageZeroGenreOneArea
+		{
+			width : 258px;
+			height : 143.3px;
+		}
+		#WidgetPlaylistPageZeroGenreTwoArea
+		{
+			width : 258px;
+			height : 143.3px;
+		}
+		#WidgetPlaylistPageZeroGenreThreeArea
+		{
+			width : 258px;
+			height : 143.3px;
+		}
+		#WidgetPlaylistPageZeroGenreFourArea
+		{
+			width : 258px;
+			height : 143.3px;
+		}
+		#WidgetPlaylistPageZeroGenreFiveArea
+		{
+			width : 258px;
+			height : 143.3px;
+		}
+		#WidgetPlaylistPageZeroGenreSixArea
+		{
+			width : 258px;
+			height : 143.3px;
+		}
+		#WidgetPlaylistPageZeroGenreSevenArea
+		{
+			width : 258px;
+			height : 143.3px;
+		}
+		/*page one*/
+		#WidgetPlaylistPageOneGenreEightArea
+		{
+			width : 258px;
+			height : 143.3px;
+		}
+		#WidgetPlaylistPageOneGenreNineArea
+		{
+			width : 258px;
+			height : 143.3px;
+		}
+		#WidgetPlaylistPageOneGenreTenArea
+		{
+			width : 258px;
+			height : 143.3px;
+		}
+		#WidgetPlaylistPageOneGenreElevenArea
+		{
+			width : 258px;
+			height : 143.3px;
+		}
+		#WidgetPlaylistPageOneGenreTwelveArea
+		{
+			width : 258px;
+			height : 143.3px;
+		}
+		#WidgetPlaylistPageOneGenreThirteenArea
+		{
+			width : 258px;
+			height : 143.3px;
+		}
+		#WidgetPlaylistPageOneGenreFourteenArea
+		{
+			width : 258px;
+			height : 143.3px;
+		}
+		#WidgetPlaylistPageOneGenreFifteenArea
+		{
+			width : 258px;
+			height : 143.3px;
+		}
+		
+		/*Profile*/
+		/*Used for members*/
+		/*contains : user -> background image, user configuration button, image, name, title, notifications, followers, following*/
+		#ProfileWidgetArea
+		{
+			width : 258px;
+			height : 287.4px;
+			position : absolute; 
+			left : 259.4px; 
+			top : 0px;
+		}
+		/*Profile Signature*/
+		/*Used for members*/
+		/*contains : user -> most favourite song ever*/
+		#ProfileSignatureWidgetArea
+		{
+			width : 258px;
+			height : 86px;
+			position : absolute;
+			left : 259.4px; 
+			top : 288px;
+		}
+		/*Profile Recency*/
+		/*Used for members*/
+		/*contains : user -> current track being listened to OR last track listened to : player section ( play button, time elapsed ), information section ( title, paragraph about song )*/
+		#ProfileRecencyWidgetArea
+		{
+			width : 258px;
+			height : 374px;
+			position : absolute; 
+			left : 518.4px; 
+			top : 0px;
+		}
+		/*Profile Volume Control*/
+		/*Used for members*/
+		/*contains : user -> controller for volume*/
+		#ProfileVolumeControlWidgetArea
+		{
+			width : 258px;
+			height : 146px;
+			position : absolute; 
+			left : 0px; 
+			top : 375.4px;
+		}
+		/*Profile Favourites Widget Area*/
+		/*Used for members*/
+		/*contains : user -> upload button, favourites label, favourites url with total number of favourites*/
+		#ProfileFavouritesWidgetArea
+		{
+			width : 258px;
+			height : 146px;
+			position : absolute;
+			left : 259.4px; 
+			top : 375.4px;
+		}
+		/*Profile Top Three Playlist Item*/
+		/*Used for members*/
+		/*contains : user -> list item number, song artist thumbnail, item name/item title, star cardinality*/
+		#ProfileTopThreePlaylistItemWidgetAreaZero
+		{
+			width : 258px;
+			height : 48px;
+			position : absolute; 
+			left : 518.4px; 
+			top : 375.4px;
+		}
+		#ProfileTopThreePlaylistItemWidgetAreaOne
+		{
+			width : 258px;
+			height : 48px;
+			position : absolute; 
+			left : 518.4px;
+			top : 424.4px;
+		}
+		#ProfileTopThreePlaylistItemWidgetAreaTwo
+		{
+			width : 258px;
+			height : 48px;
+			position : absolute; 
+			left : 518.4px; 
+			top : 473.3px;
+		}
+	/*Widget Area Components*/
+		/*Hello Widget Area Components*/
+		/*contains : login, create account url*/
+			/*user email input field*/
+			#HelloWidgetAreaComponentZero
+			{
+				margin-top : 20%;
+				margin-left : 36%;
+				width : 80px;
+				height : 64px;
+			}
+			/*user password input field*/
+			#HelloWidgetAreaComponentOne
+			{
+				margin-top : 22%;
+				margin-left : 19%;
+			}
+			#HelloWidgetAreaComponentTwo
+			{
+				margin-left : 19%;
+			}
+			#HelloWidgetAreaComponentThree
+			{
+				margin-left : 19%;
+			}
+			#HelloWidgetAreaComponentThree :hover
+			{
+				cursor : pointer;
+			}
+			#HelloWidgetAreaComponentFour
+			{
+				margin-left : 19%;
+			}
+			#HelloWidgetAreaComponentFour :hover
+			{
+				cursor : pointer;
+			}
+	/*Widget Area Components*/
+		/*Join Widget Area Components*/
+		/*contains : login/create account*/
+			/*user name input field*/
+			#JoinWidgetAreaComponentZero
+			{
+				margin-top : 20%;
+				margin-left : 19%;
+			}
+			/*user email input field*/
+			#JoinWidgetAreaComponentOne
+			{
+				margin-left : 19%;
+			}
+			/*user password input field*/
+			#JoinWidgetAreaComponentTwo
+			{
+				margin-left : 19%;
+			}
+			/*user title input field*/
+			#JoinWidgetAreaComponentThree
+			{
+				margin-left : 19%;
+			}
+			/*user picture input field*/
+			#JoinWidgetAreaComponentFourA
+			{
+				opacity : 0;
+				margin-top : -1000%; /* trick, let the non-pseudo file dialog, which is this div, be negatively oriented, thus alowing the psuedo file dialog below to operate*/
+			}
+			#JoinWidgetAreaComponentFourB
+			{
+				margin-left : 19%;
+			}
+			/*user join input button*/
+			#JoinWidgetAreaComponentFive
+			{
+				margin-left : 19%;
+			}
+			/*cancel join widget*/
+			#JoinWidgetAreaComponentSix
+			{
+				margin-left : 19%;
+			}
+		/*Welcome Widget Area Components*/
+		/*contains : logout, site navigation ( facebook, twitter, playlist )*/
+			/*user email input field*/
+			#WelcomeWidgetAreaComponentZero
+			{
+				margin-top : 20%;
+				margin-left : 36%;
+				width : 80px;
+				height : 64px;
+			}
+			/*user password input field*/
+			#WelcomeWidgetAreaComponentOne
+			{
+				margin-top : 8%;
+				margin-left : 19%;
+			}
+			#WelcomeWidgetAreaComponentTwo
+			{
+				margin-left : 19%;
+			}
+			#WelcomeWidgetAreaComponentThree
+			{
+				margin-left : 19%;
+			}
+			#WelcomeWidgetAreaComponentFour
+			{
+				margin-left : 19%;
+			}
+			#WelcomeWidgetAreaComponentFive
+			{
+				margin-left : 19%;
+			}
+		/*Widget Playlist Area Components*/
+		/*contains : configure, page index indicator, next page toggler, previous page toggler, back*/
+			/*configure*/
+			#WelcomeWidgetPlaylistAreaComponentZero
+			{
+				margin-top : 16.4%;
+				margin-left : 19%;
+			}
+			/*jump to page*/
+			#WelcomeWidgetPlaylistAreaComponentOne
+			{
+				margin-left : 19%;
+			}
+			/*previous page*/
+			#WelcomeWidgetPlaylistAreaComponentTwo
+			{
+				margin-left : 19%;
+			}
+			/*next page*/
+			#WelcomeWidgetPlaylistAreaComponentThree
+			{
+				margin-left : 19%;
+			}
+			/*home*/
+			#WelcomeWidgetPlaylistAreaComponentFour
+			{
+				margin-left : 19%;
+			}	 
+		/*Widget User Information Area Components*/
+		/*contains : help, page index indicator, next page toggler, previous page toggler, back*/
+			/*help*/
+			#WelcomeWidgetUserInformationAreaComponentZero
+			{
+				margin-top : 16.4%;
+				margin-left : 19%;
+			}
+			/*jump to page*/
+			#WelcomeWidgetUserInformationAreaComponentOne
+			{
+				margin-left : 19%;
+			}
+			/*previous page*/
+			#WelcomeWidgetUserInformationAreaComponentTwo
+			{
+				margin-left : 19%;
+			}
+			/*next page*/
+			#WelcomeWidgetUserInformationAreaComponentThree
+			{
+				margin-left : 19%;
+			}
+			/*home*/
+			#WelcomeWidgetUserInformationAreaComponentFour
+			{
+				margin-left : 19%;
+			}	 
+		/* Widget Playlist Genre Area Components*/
+		/*contains : genre widgets */
+			.WidgetPlaylistPageOneGenreNAreaComponentZero
+			{
+				color : rgba(31, 107, 98, 1);
+				font-size : 80px;
+				font-family : Ostrich;
+			}
+			/*genre zero item - African*/
+			#WidgetPlaylistPageZeroGenreZeroAreaComponentZero
+			{
+			}
+			/*genre zero item - Blues*/
+			#WidgetPlaylistPageZeroGenreOneAreaComponentZero
+			{
+			}
+			/*genre zero item - Comedy*/
+			#WidgetPlaylistPageZeroGenreTwoAreaComponentZero
+			{
+			}
+			/*genre zero item - Country*/
+			#WidgetPlaylistPageZeroGenreThreeAreaComponentZero
+			{
+			}
+			/*genre zero item - Dancehall*/
+			#WidgetPlaylistPageZeroGenreFourAreaComponentZero
+			{
+			}
+			/*genre zero item - Electronic*/
+			#WidgetPlaylistPageZeroGenreFiveAreaComponentZero
+			{
+			}
+			/*genre zero item - Folk*/
+			#WidgetPlaylistPageZeroGenreSixAreaComponentZero
+			{
+			}
+			/*genre zero item - Heavy Metal*/
+			#WidgetPlaylistPageZeroGenreSevenAreaComponentZero
+			{
+			}
+			/*genre zero item - Hip Hop*/
+			#WidgetPlaylistPageOneGenreEightAreaComponentZero
+			{
+			}
+			/*genre zero item - Jazz*/
+			#WidgetPlaylistPageOneGenreNineAreaComponentZero
+			{
+			}
+			/*genre zero item - */
+			#WidgetPlaylistPageOneGenreTenAreaComponentZero
+			{
+			}
+			/*genre zero item - */
+			#WidgetPlaylistPageOneGenreElevenAreaComponentZero
+			{
+			}
+			/*genre zero item - */
+			#WidgetPlaylistPageOneGenreTwelveAreaComponentZero
+			{
+			}
+			/*genre zero item - */
+			#WidgetPlaylistPageOneGenreThirteenAreaComponentZero
+			{
+			}
+			/*genre zero item - */
+			#WidgetPlaylistPageOneGenreFourteenAreaComponentZero
+			{
+			}
+			/*genre zero item - */
+			#WidgetPlaylistPageOneGenreFifteenAreaComponentZero
+			{
+			}
+		/*Widget User Information Area Components*/
+		/*contains : save, back*/
+			/*save*/
+			#WelcomeWidgetUserInformationConfigurationAreaComponentZero
+			{
+				margin-top : 16.4%;
+				margin-left : 19%;
+			}
+			/*back*/
+			#WelcomeWidgetUserInformationConfigurationAreaComponentOne
+			{
+				margin-left : 19%;
+			}
+		/*Widget User Information Area Zero Area Components*/
+		/*contains : moods, ...*/
+			/*moods*/
+			#WidgetUserInformationConfigurationAreaZeroAreaComponentZero
+			{
+				width : 62px;
+				height : 62px;
+				margin-left : 38%;
+				margin-top : 6%;
+				text-align : center;
+			}
+			#WidgetUserInformationConfigurationAreaZeroAreaComponentOne
+			{
+				margin-top : 16.4%;
+				margin-left : 19%;
+			}
+		/*Profile Widget Area Components*/
+		/*contains : user -> background image, configuration button, user image, name, title, notifications, followers, following*/
+			/*background image*/
+			#ProfileWidgetAreaComponentZero
+			{
+				position : absolute;
+				width : 258px;
+				height : 287.4px;
+				z-index : 1;
+			}
+			/*configuration button*/
+			/*
+			#ProfileWidgetAreaComponentTwenty
+			{
+				position : absolute;
+				margin-left : 5%;
+				width : 258px;
+				height : 287.4px;
+				z-index : 1;
+				color : rgba(52, 250, 226, 1);
+			}*/
+			/*location indicator*/
+			#ProfileWidgetAreaComponentOne
+			{
+				position : absolute;
+				margin-left : 32%;
+				margin-top : 73%;
+				z-index : 2;
+				color : rgba(52, 250, 226, 1);
+			}
+			#ProfileWidgetAreaComponentOne:hover
+			{
+				cursor: pointer;
+			}
+			/*user image*/
+			#ProfileWidgetAreaComponentTwo
+			{
+				position : absolute;
+				width : 120px;
+				height : 120px;
+				margin-left : 26%;
+				margin-top : 12%;
+				-moz-border-radius: 120px;
+				border-radius: 120px;
+				z-index : 2;
+			}
+			/*user name*/
+			#ProfileWidgetAreaComponentThree
+			{
+				position : absolute;
+				margin-left : 32%;
+				margin-top : 60%;
+				z-index : 2;
+				color : white;
+			}
+			/*user title*/
+			#ProfileWidgetAreaComponentFour
+			{
+				position : absolute;
+				margin-left : 32%;
+				margin-top : 67%;
+				z-index : 2;
+				color : white;
+			}
+			/*following, followers, notifications box*/
+			#ProfileWidgetAreaComponentFive
+			{
+				position : absolute;
+				width : 258px;
+				height : 64px;	
+				margin-top : 90%;
+				z-index : 2;
+			}
+			/*title : 'Notifications'*/
+			#ProfileWidgetAreaComponentSix
+			{
+				position : absolute;
+				width : 258px;
+				height : 64px;	
+				margin-top : 91%;
+				margin-left : 2%;
+				z-index : 2;
+				color : white;
+			}
+			#ProfileWidgetAreaComponentSix:hover
+			{
+				cursor: pointer;
+			}
+			/*value : notifications*/
+			#ProfileWidgetAreaComponentSixB
+			{
+				position : absolute;
+				width : 258px;
+				height : 64px;	
+				margin-top : 96%;
+				margin-left : 2%;
+				z-index : 2;
+				color : white;
+			}
+			#ProfileWidgetAreaComponentSixB:hover
+			{
+				cursor: pointer;
+			}
+			/*title : 'Followers'*/
+			#ProfileWidgetAreaComponentSeven
+			{
+				position : absolute;
+				width : 258px;
+				height : 64px;	
+				margin-top : 91%;
+				margin-left : 40%;
+				z-index : 2;
+				color : white;
+			}
+			#ProfileWidgetAreaComponentSeven:hover
+			{
+				cursor: pointer;
+			}
+			/*value : followers*/
+			#ProfileWidgetAreaComponentSevenB
+			{
+				position : absolute;
+				width : 258px;
+				height : 64px;	
+				margin-top : 96%;
+				margin-left : 40%;
+				z-index : 2;
+				color : white;
+			}
+			#ProfileWidgetAreaComponentSevenB:hover
+			{
+				cursor: pointer;
+			}
+			/*title : 'Following'*/
+			#ProfileWidgetAreaComponentEight
+			{
+				position : absolute;
+				width : 258px;
+				height : 64px;	
+				margin-top : 91%;
+				margin-left : 80%;
+				z-index : 2;
+				color : white;
+			}
+			#ProfileWidgetAreaComponentEight:hover
+			{
+				cursor: pointer;
+			}	
+			/*value : following*/
+			#ProfileWidgetAreaComponentEightB
+			{
+				position : absolute;
+				width : 258px;
+				height : 64px;	
+				margin-top : 96%;
+				margin-left : 80%;
+				z-index : 2;
+				color : white;
+			}
+			#ProfileWidgetAreaComponentEightB :hover
+			{
+				cursor: pointer;
+			}	
+		/*Profile Signature Widget Area Components*/
+		/*contains : user -> most favourite song ever*/
+			/*play button*/
+			#ProfileSignatureWidgetAreaComponentZero
+			{
+				content : url( '../images/play.png' ); 
+				margin-top : 6%;
+				margin-left : 6%;
+				height : 54px;
+			}
+			/*pause button*/
+			#ProfileSignatureWidgetAreaComponentZero :hover
+			{
+				cursor : pointer;
+				content : url( '../images/pause.png' ); 
+			}
+			/*artiste name*/
+			#ProfileSignatureWidgetAreaComponentOne 
+			{
+				margin-top : -20%;
+				margin-left : 34%;
+				position : absolute;
+				z-index : 2;
+				color : white;
+			}
+			/*artiste song*/
+			#ProfileSignatureWidgetAreaComponentTwo
+			{
+				margin-top : -15%;
+				margin-left : 34%;
+				position : absolute;
+				z-index : 2;
+				color : white;
+			}
+			/*song duration graph*/
+			#ProfileSignatureWidgetAreaComponentThree
+			{
+				margin-top : -8%;
+				margin-left : 34%;
+				width : 148;
+				height : 1;
+				position : absolute;
+				z-index : 2;
+				background-color : white;
+			}
+			/*song duration value*/
+			#ProfileSignatureWidgetAreaComponentFour
+			{
+				margin-top : -8%;
+				margin-left : 34%;
+				position : absolute;
+				z-index : 2;
+				color : white;
+			}
+		/*Profile Recency Widget Area Components*/
+		/*contains : user -> current track being listened to OR last track listened to : player section ( play button, time elapsed ), information section ( title, paragraph about song )*/
+			/*media cover image*/
+			#ProfileRecencyWidgetAreaComponentZero
+			{
+				position : absolute;
+				width : 258px;
+				height : 232px;
+				z-index : 1;
+			}
+			/*media player button*/
+			#ProfileRecencyWidgetAreaComponentOne
+			{
+				position : absolute;
+				content : url( '../images/play.png' );
+				margin-top : 34%;
+				margin-left : 39%;
+				height : 54px;
+				z-index : 1;
+			}
+			#ProfileRecencyWidgetAreaComponentOne :hover
+			{
+				cursor : pointer;
+			}
+			/*media elapsed value*/
+			#ProfileRecencyWidgetAreaComponentTwo
+			{
+				position : absolute;
+				z-index : 1;
+				margin-top : 78%;
+				margin-left : 4%;
+				color : white;
+			}
+			/*media duration graph*/
+			#ProfileRecencyWidgetAreaComponentThree
+			{
+				position : absolute;
+				width : 235px;
+				height : 1;
+				z-index : 1;
+				margin-top : 86%;
+				margin-left : 4%;
+				background-color : white;
+			}
+			/*media description area*/
+			#ProfileRecencyWidgetAreaComponentFour
+			{
+				position : absolute;
+				z-index : 1;
+				width : 258px;
+				height : 142px;
+				margin-top : 90%;
+				background-color : #ffffff;
+			}
+			/*media title*/
+			#ProfileRecencyWidgetAreaComponentFive
+			{
+				position : absolute;
+				z-index : 1;
+				margin-top : 96%;
+				margin-left : 20px; 
+				color : #2f042f;
+				max-width: 190px;
+				word-wrap: break-word;
+			}
+			/*media description*/
+			#ProfileRecencyWidgetAreaComponentSix
+			{
+				position : absolute;
+				margin-top : 110%;
+				z-index : 1;
+				margin-left : 20px;
+				color : #000000;
+				max-width: 190px;
+				word-wrap: break-word;
+			}
+		/*Profile Playlist Item Widget Area Components*/
+		/*contains : user -> current track being listened to OR last track listened to : player section ( play button, time elapsed ), information section ( title, paragraph about song )*/
+			/*item zero*/
+				/*item number*/
+				#ProfileTopThreePlaylistItemWidgetAreaComponentZeroA
+				{
+					position : absolute;
+					margin-top : 4%;
+					margin-left : 4%;
+					z-index : 1;
+					color : #ffffff;
+				}
+				/*item artiste image*/
+				#ProfileTopThreePlaylistItemWidgetAreaComponentZeroB
+				{
+					position : absolute;
+					margin-left : 16%;
+					margin-top : .8%;
+					width : 42px;
+					height : 42px;
+					z-index : 2;
+					-moz-border-radius: 42px;
+					border-radius: 42px;
+				}
+				/*item artiste name*/
+				#ProfileTopThreePlaylistItemWidgetAreaComponentZeroC
+				{
+					position : absolute;
+					margin-top : 4%;
+					margin-left : 38%;
+					z-index : 1;
+					color : #ffffff;
+				}
+				/*item artiste song*/
+				#ProfileTopThreePlaylistItemWidgetAreaComponentZeroD
+				{
+					position : absolute;
+					margin-top : 10%;
+					margin-left : 38%;
+					z-index : 1;
+					color : #ffffff;
+				}	
+				#ProfileTopThreePlaylistItemWidgetAreaComponentZeroD :hover
+				{
+					cursor : pointer;
+				}	
+				/*item rating level 0*/
+				#ProfileTopThreePlaylistItemWidgetAreaComponentZeroEA
+				{
+					position : absolute;
+					content : url( '../images/ratings picture.png' );
+					margin-left : 70%;
+					margin-top : 6%;
+					height : 20px;
+					z-index : 2;
+					-moz-border-radius: 8px;
+					border-radius: 8px;
+				}
+				/*item rating level 1*/
+				#ProfileTopThreePlaylistItemWidgetAreaComponentZeroEB
+				{
+					position : absolute;
+					content : url( '../images/ratings picture.png' );
+					margin-left : 78%;
+					margin-top : 6%;
+					height : 20px;
+					z-index : 2;
+					-moz-border-radius: 8px;
+					border-radius: 8px;
+				}
+				/*item rating level 2*/
+				#ProfileTopThreePlaylistItemWidgetAreaComponentZeroEC
+				{
+					position : absolute;
+					content : url( '../images/ratings picture.png' );
+					margin-left : 86%;
+					margin-top : 6%;
+					height : 20px;
+					z-index : 2;
+					-moz-border-radius: 8px;
+					border-radius: 8px;
+				}	
+				
+			/*item one*/
+				/*item number*/
+				#ProfileTopThreePlaylistItemWidgetAreaComponentOneA
+				{
+					position : absolute;
+					margin-top : 4%;
+					margin-left : 4%;
+					z-index : 1;
+					color : #ffffff;
+				}
+				/*item artiste image*/
+				#ProfileTopThreePlaylistItemWidgetAreaComponentOneB
+				{
+					position : absolute;
+					content : url( '../images/widget.profile.top.three.playlist.item.sample.one.picture.png' );
+					margin-left : 16%;
+					margin-top : .8%;
+					width : 42px;
+					height : 42px;
+					z-index : 2;
+					-moz-border-radius: 42px;
+					border-radius: 42px;
+				}
+				/*item artiste name*/
+				#ProfileTopThreePlaylistItemWidgetAreaComponentOneC
+				{
+					position : absolute;
+					margin-top : 4%;
+					margin-left : 38%;
+					z-index : 1;
+					color : #ffffff;
+				}
+				/*item artiste song*/
+				#ProfileTopThreePlaylistItemWidgetAreaComponentOneD
+				{
+					position : absolute;
+					margin-top : 10%;
+					margin-left : 38%;
+					z-index : 1;
+					color : #ffffff;
+				}	
+				#ProfileTopThreePlaylistItemWidgetAreaComponentOneD :hover
+				{
+					cursor : pointer;
+				}	
+				/*item rating level 0*/
+				#ProfileTopThreePlaylistItemWidgetAreaComponentOneEA
+				{
+					position : absolute;
+					content : url( '../images/ratings picture.png' );
+					margin-left : 70%;
+					margin-top : 6%;
+					height : 20px;
+					z-index : 2;
+					-moz-border-radius: 8px;
+					border-radius: 8px;
+				}
+				/*item rating level 1*/
+				#ProfileTopThreePlaylistItemWidgetAreaComponentOneEB
+				{
+					position : absolute;
+					content : url( '../images/ratings picture.png' );
+					margin-left : 78%;
+					margin-top : 6%;
+					height : 20px;
+					z-index : 2;
+					-moz-border-radius: 8px;
+					border-radius: 8px;
+				}
+				/*item rating level 2*/
+				#ProfileTopThreePlaylistItemWidgetAreaComponentOneEC
+				{
+					display : none;
+					position : absolute;
+					content : url( '../images/ratings picture.png' );
+					margin-left : 86%;
+					margin-top : 6%;
+					height : 20px;
+					z-index : 2;
+					-moz-border-radius: 8px;
+					border-radius: 8px;
+				}	
+			/*item two*/
+				/*item number*/
+				#ProfileTopThreePlaylistItemWidgetAreaComponentTwoA
+				{
+					position : absolute;
+					margin-top : 4%;
+					margin-left : 4%;
+					z-index : 1;
+					color : #ffffff;
+				}
+				/*item artiste image*/
+				#ProfileTopThreePlaylistItemWidgetAreaComponentTwoB
+				{
+					position : absolute;
+					content : url( '../images/widget.profile.top.three.playlist.item.sample.two.picture.png' );
+					margin-left : 16%;
+					margin-top : .8%;
+					width : 42px;
+					height : 42px;
+					z-index : 2;
+					-moz-border-radius: 42px;
+					border-radius: 42px;
+				}
+				/*item artiste name*/
+				#ProfileTopThreePlaylistItemWidgetAreaComponentTwoC
+				{
+					position : absolute;
+					margin-top : 4%;
+					margin-left : 38%;
+					z-index : 1;
+					color : #ffffff;
+				}
+				/*item artiste song*/
+				#ProfileTopThreePlaylistItemWidgetAreaComponentTwoD
+				{
+					position : absolute;
+					margin-top : 10%;
+					margin-left : 38%;
+					z-index : 1;
+					color : #ffffff;
+				}	
+				#ProfileTopThreePlaylistItemWidgetAreaComponentTwoD :hover
+				{
+					cursor : pointer;
+				}	
+				/*item rating level 0*/
+				#ProfileTopThreePlaylistItemWidgetAreaComponentTwoEA
+				{
+					position : absolute;
+					content : url( '../images/ratings picture.png' );
+					margin-left : 70%;
+					margin-top : 6%;
+					height : 20px;
+					z-index : 2;
+					-moz-border-radius: 8px;
+					border-radius: 8px;
+				}
+				/*item rating level 1*/
+				#ProfileTopThreePlaylistItemWidgetAreaComponentTwoEB
+				{
+					display : none;
+					position : absolute;
+					content : url( '../images/ratings picture.png' );
+					margin-left : 78%;
+					margin-top : 6%;
+					height : 20px;
+					z-index : 2;
+					-moz-border-radius: 8px;
+					border-radius: 8px;
+				}
+				/*item rating level 2*/
+				#ProfileTopThreePlaylistItemWidgetAreaComponentTwoEC
+				{
+					display : none;
+					position : absolute;
+					content : url( '../images/ratings picture.png' );
+					margin-left : 86%;
+					margin-top : 6%;
+					height : 20px;
+					z-index : 2;
+					-moz-border-radius: 8px;
+					border-radius: 8px;
+				}	
+		/*Profile Favourites Widget Area Components*/
+		/*contains : user -> upload button, favourites label, favourites url with total number of favourites*/
+			#ProfileFavouritesWidgetAreaComponentZero
+			{
+				position : absolute;
+				margin-top : 49%;
+				margin-left : 4%;
+				z-index : 3;
+				color : #ffffff;
+			}	
+			#ProfileFavouritesWidgetAreaComponentZero :hover
+			{
+				cursor : pointer;
+			}	
+			/*most favourite artiste circular graph/ring label*/
+			#ProfileFavouritesWidgetAreaComponentOneA
+			{
+				font-family : Segoe;
+				font-size : 14px;
+				color : magenta;
+				margin-left : 1%;
+				z-index : 4;
+			}
+			/*most favourite artiste circular graph/ring*/
+			#ProfileFavouritesWidgetAreaComponentOneB 
+			{
+				padding : 20px;
+				border : 3px solid white;
+				-moz-border-radius : 76px;
+				border-radius : 76px;
+				width : 76px;
+				height : 76px;
+				margin-left : 26%;
+				margin-top : 3%;
+			}
+			#ProfileFavouritesWidgetAreaComponentOneB :after
+			{
+				content: '';
+				border-left: 45px solid transparent;  /*This value will be edited in real time*/
+				border-top: 45px solid rgba(52, 250, 226, 1);  /*This value will be edited in real time*/
+				border-right: 45px solid transparent; /*This value will be edited in real time*/
+				border-top-color: rgba(52, 250, 226, 1);    
+				position: absolute;
+			}
+			/*most favourite artiste image*/
+			#ProfileFavouritesWidgetAreaComponentOneC
+			{
+				position : absolute;
+				width : 114px;
+				height : 114px;
+				margin-top : -45.8%;
+				margin-left : 27.3%;
+				-moz-border-radius: 120px;
+				border-radius: 120px;
+				z-index : 2;
+				display : inline;
+			}
+			/*favourites : label*/
+			#ProfileFavouritesWidgetAreaComponentTwoA
+			{
+				position : absolute;
+				margin-top : -8%;
+				margin-left : 78%;
+				z-index : 1;
+				color : #ffffff;
+			}	
+			/*favourites : value*/
+			#ProfileFavouritesWidgetAreaComponentTwoA :hover
+			{
+				cursor : pointer;
+			}				
+			#ProfileFavouritesWidgetAreaComponentTwoB
+			{
+				position : absolute;
+				margin-top : -3.2%;
+				margin-left : 78%;
+				z-index : 1;
+				color : #ffffff;
+			}	
+			#ProfileFavouritesWidgetAreaComponentTwoB :hover
+			{
+				cursor : pointer;
+			}				
+			
+	/*User information styles*/
+		/*areas*/
+			/*Youtube style*/
+			#UserInformationYoutubeArea
+			{
+				width : 258px;
+				height : 143.3px;
+			}
+		/*area components*/
+			/*Youtube area components*/
+			#UserInformationYoutubeAreaComponentZero
+			{
+				width : 258px;
+				height : 143.3px;
+			}		
+
+		/*Profile Volume Control Widget Area Components*/
+		/*contains : pending...*/
+			/*configure*/
+			#ProfileVolumeControlWidgetAreaComponentZero
+			{
+				margin-top : 6.4%;
+				margin-left : 4%;
+				font-size : 10px;
+				color : rgba(31, 107, 98, 1);
+				font-family : Segoe;
+			}
+			#ProfileVolumeControlWidgetAreaComponentOne
+			{
+				margin-left : 4%;
+			}
+			#ProfileVolumeControlWidgetAreaComponentTwo
+			{
+			}
+			#ProfileVolumeControlWidgetAreaComponentThree
+			{
+				margin-left : 4%;
+				font-size : 11px;
+				color : rgba(31, 107, 98, 1);
+				font-family : Segoe;
+			}
+			#ProfileVolumeControlWidgetAreaComponentFour
+			{
+				background-color : rgba(52, 250, 226, 1);
+			}
+			
+	/*Widget Area/Standard HTML Component Fx and deviations*/
+		img.dim
+		{ 
+			-webkit-filter : brightness(40%); 
+			-moz-filter : brightness(40%); 
+			-o-filter : brightness(40%); 
+			-ms-filter : brightness(40%); 
+			filter : brightness(40%); 
+		}
+		img.dim :hover
+		{ 
+			-webkit-filter : brightness(80%); 
+			-moz-filter : brightness(80%); 
+			-o-filter : brightness(80%); 
+			-ms-filter : brightness(80%); 
+			filter : brightness(80%); 
+		}	
+		img.highBlur 
+		{ 
+			-webkit-filter : blur(10px); 
+			-moz-filter : blur(10px); 
+			-o-filter : blur(10px); 
+			-ms-filter : blur(10px); 
+			filter : blur(10px); 
+		}
+		img.mediumBlur 
+		{ 
+			-webkit-filter : blur(5px); 
+			-moz-filter : blur(5px); 
+			-o-filter : blur(5px); 
+			-ms-filter : blur(5px); 
+			filter : blur(5px); 
+		}	
+		img.lowBlur 
+		{ 
+			-webkit-filter : blur(1px); 
+			-moz-filter : blur(1px); 
+			-o-filter : blur(1px); 
+			-ms-filter : blur(1px); 
+			filter : blur(1px); 
+		}
+		img.highOpacity 
+		{ 
+			opacity : 0.9;
+		}
+		img.mediumOpacity 
+		{ 
+			opacity : 0.5;
+		}
+		img.lowpacity 
+		{ 
+			opacity : 0.2;
+		}
+		/*input*/
+		input.styleZero  /*text inputs*/
+		{
+			padding : 9px;
+			border : solid 1px rgba(30, 18, 31, 0.5);
+			outline-color : rgba(30, 18, 31, 0.5);
+			font-family : Segoe;
+			width : 160px;
+			background : rgba(52, 250, 226, 1);
+			color : white;
+			text-align : center;
+		}
+		/*text area*/
+		textarea
+		{
+			font-family : Segoe;
+			position : relative; /* Enable absolute positioning for children and pseudo elements */
+			width : 162px;
+			height : 84px;
+			margin: 0 auto;
+			background : rgba(52, 250, 226, 1);
+			color : white;
+			border : solid 1px rgba(30, 18, 31, 0.5);
+			outline-color : rgba(30, 18, 31, 0.5);
+			cursor : pointer;
+			text-align : center;
+		}
+		/*drop down lists*/
+		select 
+		{
+			font-family : Segoe;
+			position : relative; /* Enable absolute positioning for children and pseudo elements */
+			width : 162px;
+			height : 38px;
+			margin: 0 auto;
+			background : rgba(52, 250, 226, 1);
+			color : white;
+			outline : none;
+			cursor : pointer;
+		}
+		input.hoverableStyleZero
+		{
+			padding : 9px;
+			border : solid 1px rgba(30, 18, 31, 0.5);
+			outline-color : rgba(30, 18, 31, 0.5);
+			font-family : Segoe;
+			width : 160px;
+			background : rgba(52, 250, 226, 1);
+			color : white;
+			text-align : center;
+		}
+		input.hoverableStyleZero :hover
+		{
+			cursor : pointer;
+			outline-color : rgba(238, 191, 240, 1);
+		}
+		img.soulificationLogo
+		{
+			content : url( '../images/soulification.png');
+			width : 250;
+			height : 230;
+		}
+		/*nice_magenta_config : 513252*/
