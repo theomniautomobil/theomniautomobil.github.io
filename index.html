@@ -1,0 +1,99 @@
+<!-- Author: God Bennett (c) 2024 -->
+<!-- Code adapted from Author's own old social media website: https://github.com/JordanMicahBennett/SOULIFY -->
+
+<html id = "html">
+	<head>
+		<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+		<meta charset='UTF-8'>
+		<title>Extortionist 2024</title>
+		<link href='data/stylesheets/stylesheet.desktop.css' rel='stylesheet' type='text/css'>
+		
+		
+		<script src='data/javascripts/javascript.js' type='text/javascript'></script>
+		
+		<link href = 'data/stylesheets/bigvideo/bigvideo.css' type = 'text/css' rel = 'stylesheet'/>
+		<link href = 'data/stylesheets/pace/pace.css' type = 'text/css' rel = 'stylesheet'/>
+		
+		<link rel='icon' type='image/png' href='data/images/logoSmall.png' />
+		<script src='data/javascripts/jquery.js' type='text/javascript'></script>
+		<script src='data/javascripts/jquery.audiotag.js' type='text/javascript'></script>
+		<script src='data/javascripts/pace.min.js' type='text/javascript'></script>
+		<script src="data/javascripts/sweetalert-dev.js"></script>
+		<link href="data/stylesheets/sweetalert.css" rel=stylesheet type = 'text/css' />	
+	</head>
+	<body id = "SrmgIndexArea">
+		<div id = "WebsiteLoadingContent">
+			<p class = 'SmallSegoeFontFace'> ❤ LOADING THEOMNIAUTOMOBIL BETA WEBSITE ❤ </p> 
+			<!-- <a href="https://xtortionist.github.io"> <p class = 'SmallSegoeFontFace'> ❤ FORCE_RELOAD ❤ </p> </a> -->
+		</div>
+		
+		<div id = "WebsiteContent">
+
+			<script src='data/javascripts/utilities.js' type='text/javascript'></script>
+
+			<div id = 'ProfileTopThreePlaylistItemWidgetAreaZero' class = 'WidgetArea'>
+
+				<a href="https://youtu.be/LEupe3JHMiQ"> <p id = 'ProfileTopThreePlaylistItemWidgetAreaComponentZeroC' class = 'SmallSegoeFontFace'> Sustainable Energy Goal </p> </a>
+			</div>
+			
+			<div id = 'ProfileTopThreePlaylistItemWidgetAreaOne' class = 'WidgetArea'>
+				<a href="https://www.behance.net/gallery/175328927/Dio-Lucciola-(3d)"> <p id = 'ProfileTopThreePlaylistItemWidgetAreaComponentOneC' class = 'SmallSegoeFontFace'> The Dio Automobile </p> </a>
+			</div>
+			
+			<div id = 'ProfileTopThreePlaylistItemWidgetAreaThree' class = 'WidgetArea'>
+				<img id = 'ProfileSignatureWidgetAreaComponentZero' />
+				<a href="https://www.facebook.com/TheAriaDio/"> <p id = 'ProfileSignatureWidgetAreaComponentOne' class = 'ExtraSmallSegoeFontFace' > Follow TheAriaDio! </p> </a>
+				<a href="https://www.facebook.com/TheOmniAutomobilEra"> <p id = 'ProfileSignatureWidgetAreaComponentTwo' class = 'ExtraExtraSmallSegoeFontFace' > Follow TheOmniAuomobilEra! </p> </a>
+				<div id = 'ProfileSignatureWidgetAreaComponentThree'> </div>
+			</div>
+		</div>
+		
+		<!-- BigVideo Dependencies -->
+		<script src='data/javascripts/bigvideo/jquery.min.js'></script>
+		<script>window.jQuery || document.write('<script src='data/javascripts/bigvideo/jquery.min.js'><\/script>')</script>
+		<script src='data/javascripts/bigvideo/jquery-ui.js'></script>
+		
+		<script src='data/javascripts/bigvideo/video.js'></script>
+
+		<!-- BigVideo -->
+		<script src='data/javascripts/bigvideo/bigvideo.js'></script>
+
+		<!-- Videos -->
+		<script>
+			//Reload Extortionist Website every 4.5 minutes, when video sequence is estimated to make full pass
+			window.setInterval('refresh()', 270000); 	
+			// Call a function every 270000 milliseconds (4.5 minutes)
+
+			// Refresh or reload page.
+			function refresh()
+			{
+				location.reload(true);
+			}
+		
+		
+			$(function() {
+				//$("div#WebsiteContent").hide();
+				
+				var DESKTOP_MODE = screen.width >= 1224 ? true : false;
+
+				var BV = new $.BigVideo();
+				var vids = [
+					'data/videos/LUCIOLLA_TURN_TABLE_HQ_PART_A.mp4','data/videos/LUCIOLLA_TURN_TABLE_HQ_PART_B.mp4','data/videos/LUCIOLLA_TURN_TABLE_HQ_PART_C.mp4'
+				];
+				
+				if ( DESKTOP_MODE )
+				{
+					//vids.sort(function() { return 0.5 - Math.random() }); // random order on load
+					BV.init();
+					BV.show(vids,{ambient:true});
+					
+					//BV.loop();
+
+					//$("div#WebsiteLoadingContent").hide();
+					//$("div#WebsiteContent").show();
+				}
+			});
+		</script>
+	</body>
+</html>
