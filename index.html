@@ -101,8 +101,15 @@
 
 				scene = new THREE.Scene();
 
+				var hdrArray = [ 'castel_st_angelo_roof_4k - like', 'modern_buildings_2_4k', 'vignaioli_night_4k', 'schadowplatz_4k -like', 'potsdamer_platz_4k -like' ];
+				var MAX_HDRS = hdrArray.length - 1;
+				var MIN_HDRS = 0;
+				var randomHdrIndex = Math.floor(Math.random() * (MAX_HDRS - MIN_HDRS + 1)) + MIN_HDRS;
+				var randomHdrIndex = randomHdrIndex!= null ? randomHdrIndex : 1;
+				var randomHdr = hdrArray [1];
+
 				const hdrLoader = new RGBELoader();
-				const envMap = await hdrLoader.loadAsync( 'data/textures/castel_st_angelo_roof_4k - like.hdr' );
+				const envMap = await hdrLoader.loadAsync( 'data/textures/' + randomHdr + '.hdr' );
 				envMap.mapping = THREE.EquirectangularReflectionMapping;
 
 				skybox = new GroundedSkybox( envMap, params.height, params.radius );
