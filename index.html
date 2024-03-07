@@ -19,7 +19,7 @@
 		</div>
 		<div id="info">
 			<p> <img src="data/images/logoMain.png" style="padding-top:25%; width:180px; height:180px;"></img> </p> 
-			<p class = 'LargeSegoeFontFace'> Jamaica's 1st self driving car. <a style="color:#efe0a7;" href = "https://sketchfab.com/3d-models/dio-lucciola-d7c46fb87869459d95c94df2762d7be3">See build log</a>.</p> 
+			<p class = 'LargeSegoeFontFace'> Jamaica's 1st self driving car. <a style="color:#efe0a7;" href = "https://sketchfab.com/3d-models/dio-lucciola-d7c46fb87869459d95c94df2762d7be3">See build log</a>.  Visit <a style="color: #efe0a7;" href="https://igodcollective.github.io/">iGod Collective</a> </p> 
 			<p class = 'MediumSegoeFontFace'>Dio Lucciola Automobile 3d Model and Real Car Project by <a style="color: #efe0a7;" href="https://www.facebook.com/GodEngineer/" target="_blank" rel="noopener">God Bennett</a> Powered by <a style="color: #efe0a7;" href="https://threejs.org" target="_blank" rel="noopener">threejs</a></p>
 			
 			<p class = 'MediumSegoeFontFace'>Background From </a> by <a style="color: #efe0a7;" href="https://polyhaven.com/" target="_blank" rel="noopener">Polyhaven</a> </p>
@@ -69,8 +69,9 @@
 			const STEPS_PER_FRAME = 5;
 			const direction = new THREE.Vector3;
 			let cameraTranslationSpeedPos = 0.34, cameraTranslationSpeedNeg = 0.00001;
-			
-			
+			var raycaster, mouse;
+			let uiComponents;
+			let MAX_UI_COMPONENTS = 5;
 			
 			init().then( animate );
 			
@@ -98,9 +99,10 @@
 				);
 				camera.position.set( - 20, 7, 20 );
 				camera.lookAt( 0, 4, 0 );
-
+				raycaster = new THREE.Raycaster();
+				mouse = new THREE.Vector2();
 				scene = new THREE.Scene();
-
+				
 				var hdrArray = [ 'castel_st_angelo_roof_4k - like', 'modern_buildings_2_4k', 'vignaioli_night_4k', 'schadowplatz_4k -like', 'potsdamer_platz_4k -like' ];
 				var MAX_HDRS = hdrArray.length - 1;
 				var MIN_HDRS = 0;
@@ -187,8 +189,145 @@
 
 				document.body.appendChild( renderer.domElement );
 				window.addEventListener( 'resize', onWindowResize );
-		
+				//renderer.domElement.addEventListener('click', detectGltfClick, false);
+				
+				//srenderer.domElement.addEventListener('mousemove', detectGltfHover, false);		
 			}
+			
+			function openInNewTab(url) {
+			  window.open(url, '_blank').focus();
+			}
+			
+			function detectGltfClick( event ) {
+
+				event.preventDefault();
+
+				mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
+				mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
+
+				raycaster.setFromCamera( mouse, camera );
+
+				var intersects = raycaster.intersectObjects( scene.children, true );
+
+				if ( intersects.length > 0 ) {
+					
+					
+					var objectName = intersects[ 0 ]["object"]["userData"]["name"]; //extracted by observing intersects[ 0 ] variable, to get location of god's hand obj id etc
+
+					//console.log( 'Intersection:', intersects[ 0 ] );
+					console.log( 'Intersection:', objectName );
+					console.log( 'intersects[ 0 ]:', intersects[ 0 ] );
+					
+					console.log( "obj_uData >>" + intersects[ 0 ]["object"]["userData"]);
+					
+					if(objectName == "Object_2")
+					{
+						openInNewTab("fabric_embodied_ai.html");
+					}					
+					if(objectName == "Object_81")
+					{
+						showUiComponent(uiComponents[1]);
+					}
+					if(objectName == "Object_17")
+					{
+						showUiComponent(uiComponents[4]);
+					}
+					if(objectName == "Object_25")
+					{
+						showUiComponent(uiComponents[2]);
+					}	
+					if(objectName == "Object_29")
+					{
+						showUiComponent(uiComponents[3]);
+					}	
+					if(objectName == "Object_36")
+					{
+						showUiComponent(uiComponents[4]);
+					}	
+					if(objectName == "Object_40")
+					{
+						showUiComponent(uiComponents[1]);
+					}						
+					/*Keys
+						Object_2 = god's hand
+						
+						//according to ring orientation from central to outer rings
+						//accounts for planets earth sized an above
+						Object_81 = sun 
+						Object_13 = orange planet, earth sized from center
+						Object_17 = earth
+						Object_25 = next planet from center
+						Object_29 = next planet from center
+						Object_36 = next planet from center
+						Object_40 = next planet from center (last planet blue)
+					*/
+				}
+
+			}
+			function detectGltfHover( event ) {
+
+				event.preventDefault();
+
+				mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
+				mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
+
+				raycaster.setFromCamera( mouse, camera );
+
+				var intersects = raycaster.intersectObjects( scene.children, true );
+
+				if ( intersects.length > 0 ) {
+					var objectName = intersects[ 0 ]["object"]["userData"]["name"]; //extracted by observing intersects[ 0 ] variable, to get location of god's hand obj id etc
+					
+					//console.log( 'Intersection:', intersects[ 0 ] );
+					if(objectName == "Object_2")
+					{
+						showUiComponent(uiComponents[0]);
+					}					
+					if((objectName == "Object_81")||(objectName == ""))
+					{
+						showUiComponent(uiComponents[1]);
+					}
+					if(objectName == "Object_17")
+					{
+						showUiComponent(uiComponents[4]);
+					}
+					if(objectName == "Object_25")
+					{
+						showUiComponent(uiComponents[2]);
+					}	
+					if(objectName == "Object_29")
+					{
+						showUiComponent(uiComponents[3]);
+					}	
+					if(objectName == "Object_36")
+					{
+						showUiComponent(uiComponents[4]);
+					}	
+					if(objectName == "Object_40")
+					{
+						showUiComponent(uiComponents[1]);
+					}							
+				}
+				else
+				{
+					disableAllUiComponents();
+				}
+				
+				
+					/*Keys
+						Object_2 = god's hand
+						
+						//according to ring orientation from central to outer rings
+						//accounts for planets earth sized an above
+						Object_81 = sun 
+						Object_13 = orange planet, earth sized from center
+						Object_17 = earth
+						Object_25 = next planet from center
+						Object_29 = next planet from center
+						Object_36 = next planet from center
+						Object_40 = next planet from center (last planet blue)
+					*/
+			}			
 			function controlCam( deltaTime) {
 
 				// gives a bit of air control
@@ -239,6 +378,7 @@
 				}		
 				renderer.render( scene, camera );
 			}
+			
 		</script>
 	</body>
 </html>
