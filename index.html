@@ -30,6 +30,36 @@
 			<link href="data/css/sweetalert.css" rel=stylesheet type = 'text/css' />	
 		</div>
 
+
+		
+		<script type="x-shader/x-vertex" id="vertexshader">
+
+			varying vec2 vUv;
+
+			void main() {
+
+				vUv = uv;
+
+				gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
+	
+			}
+
+		</script>
+
+		<script type="x-shader/x-fragment" id="fragmentshader">
+
+			uniform sampler2D baseTexture;
+			uniform sampler2D bloomTexture;
+
+			varying vec2 vUv;
+
+			void main() {
+
+				gl_FragColor = ( texture2D( baseTexture, vUv ) + vec4( 1.0 ) * texture2D( bloomTexture, vUv ) );
+
+			}
+
+		</script>	
 		<script type="importmap">
 			{
 				"imports": {
@@ -49,6 +79,24 @@
 			import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 			import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js';
 			import { RGBELoader } from 'three/addons/loaders/RGBELoader.js';
+			import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
+			import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
+			import { ShaderPass } from 'three/addons/postprocessing/ShaderPass.js';
+			import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
+			import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
+
+			const BLOOM_SCENE = 1;
+
+			const bloomLayer = new THREE.Layers();
+			bloomLayer.set( BLOOM_SCENE );
+
+			const bloomParams = {
+				threshold: 0,
+				strength: .8,
+				radius: 1,
+				exposure: 1
+			};	
+			
 			//rain
 			import { tslFn, texture, uv, uint, positionWorld, modelWorldMatrix, cameraViewMatrix, timerLocal, timerDelta, cameraProjectionMatrix, vec2, instanceIndex, positionGeometry, storage, MeshBasicNodeMaterial, If } from 'three/nodes';
 
@@ -63,7 +111,10 @@
 				radius: 100,
 				enabled: true,
 			};
-
+			let bloomComposer, finalComposer;
+			const darkMaterial = new THREE.MeshBasicMaterial( { color: 'black' } );
+			const materials = {};
+			
 			let camera, scene, renderer, skybox, clock, droneMixer, taUniverseMixer;
 			const keyStates = {};
 			const STEPS_PER_FRAME = 5;
@@ -103,6 +154,9 @@
 				mouse = new THREE.Vector2();
 				scene = new THREE.Scene();
 				
+				//window.addEventListener( 'pointerdown', onPointerDown );
+				
+				
 				var hdrArray = [ 'castel_st_angelo_roof_4k - like', 'modern_buildings_2_4k', 'vignaioli_night_4k', 'schadowplatz_4k -like', 'potsdamer_platz_4k -like' ];
 				var MAX_HDRS = hdrArray.length - 1;
 				var MIN_HDRS = 0;
@@ -110,6 +164,8 @@
 				var randomHdrIndex = randomHdrIndex!= null ? randomHdrIndex : 1;
 				var randomHdr = hdrArray [1];
 
+
+			
 				const hdrLoader = new RGBELoader();
 				const envMap = await hdrLoader.loadAsync( 'data/textures/' + randomHdr + '.hdr' );
 				envMap.mapping = THREE.EquirectangularReflectionMapping;
@@ -142,6 +198,7 @@
 					//carModel.position.set(1, -6, -50);
 					scene.add( carModel );
 					
+					
 					render();
 
 				} );
@@ -169,15 +226,47 @@
 
 				} );
 
-				//
 
 				renderer = new THREE.WebGLRenderer( { antialias: true } );
 				renderer.setPixelRatio( window.devicePixelRatio );
 				renderer.setSize( window.innerWidth, window.innerHeight );
-				renderer.toneMapping = THREE.ACESFilmicToneMapping;
+				//renderer.toneMapping = THREE.ACESFilmicToneMapping;
+				renderer.toneMapping = THREE.ReinhardToneMapping;
+			
+				
+			    //Bloom code
+				const renderScene = new RenderPass( scene, camera );
+				const bloomPass = new UnrealBloomPass( new THREE.Vector2( window.innerWidth, window.innerHeight ), 1.5, 0.4, 0.85 );
+				bloomPass.threshold = bloomParams.threshold;
+				bloomPass.strength = bloomParams.strength;
+				bloomPass.radius = bloomParams.radius;
 
-				//
+				 bloomComposer = new EffectComposer( renderer );
+				bloomComposer.renderToScreen = false;
+				bloomComposer.addPass( renderScene );
+				bloomComposer.addPass( bloomPass );
 
+				const mixPass = new ShaderPass(
+					new THREE.ShaderMaterial( {
+						uniforms: {
+							baseTexture: { value: null },
+							bloomTexture: { value: bloomComposer.renderTarget2.texture }
+						},
+						vertexShader: document.getElementById( 'vertexshader' ).textContent,
+						fragmentShader: document.getElementById( 'fragmentshader' ).textContent,
+						defines: {}
+					} ), 'baseTexture'
+				);
+				mixPass.needsSwap = true;
+
+				const outputPass = new OutputPass();
+
+				finalComposer = new EffectComposer( renderer );
+				finalComposer.addPass( renderScene );
+				finalComposer.addPass( mixPass );
+				finalComposer.addPass( outputPass );
+				//end bloom code
+				
 				const controls = new OrbitControls( camera, renderer.domElement );
 				controls.addEventListener( 'change', render );
 				controls.target.set( 0, 2, 0 );
@@ -189,15 +278,17 @@
 
 				document.body.appendChild( renderer.domElement );
 				window.addEventListener( 'resize', onWindowResize );
-				//renderer.domElement.addEventListener('click', detectGltfClick, false);
-				
-				//srenderer.domElement.addEventListener('mousemove', detectGltfHover, false);		
+				renderer.domElement.addEventListener('click', detectGltfClick, false);
 			}
+			
 			
 			function openInNewTab(url) {
 			  window.open(url, '_blank').focus();
 			}
-			
+
+
+
+
 			function detectGltfClick( event ) {
 
 				event.preventDefault();
@@ -210,124 +301,95 @@
 				var intersects = raycaster.intersectObjects( scene.children, true );
 
 				if ( intersects.length > 0 ) {
+					const object = intersects[ 0 ]["object"];
+					//I don't want to add bloom to GroundedSkybox, who's name is ""
+					//nor headlights Object_2
+					//nor headlights Object_3
+					//nor windshield Object_5
+					//nor windshield Object_6
+					//nor bonnet strip Object_14
+					//nor body Object_16
+					//nor underbody Object_17
+					if 
+					(
+						   (object.name != "") 
+						&& (object.name != "Object_2")
+						&& (object.name != "Object_3")
+						&& (object.name != "Object_5")
+						&& (object.name != "Object_6")
+						&& (object.name != "Object_14")
+						&& (object.name != "Object_16")
+						&& (object.name != "Object_17")
+					)
+					{
 					
-					
-					var objectName = intersects[ 0 ]["object"]["userData"]["name"]; //extracted by observing intersects[ 0 ] variable, to get location of god's hand obj id etc
-
-					//console.log( 'Intersection:', intersects[ 0 ] );
-					console.log( 'Intersection:', objectName );
-					console.log( 'intersects[ 0 ]:', intersects[ 0 ] );
-					
-					console.log( "obj_uData >>" + intersects[ 0 ]["object"]["userData"]);
-					
-					if(objectName == "Object_2")
-					{
-						openInNewTab("fabric_embodied_ai.html");
-					}					
-					if(objectName == "Object_81")
-					{
-						showUiComponent(uiComponents[1]);
-					}
-					if(objectName == "Object_17")
-					{
-						showUiComponent(uiComponents[4]);
-					}
-					if(objectName == "Object_25")
-					{
-						showUiComponent(uiComponents[2]);
-					}	
-					if(objectName == "Object_29")
-					{
-						showUiComponent(uiComponents[3]);
-					}	
-					if(objectName == "Object_36")
-					{
-						showUiComponent(uiComponents[4]);
-					}	
-					if(objectName == "Object_40")
-					{
-						showUiComponent(uiComponents[1]);
-					}						
-					/*Keys
-						Object_2 = god's hand
+						object.layers.toggle( BLOOM_SCENE );
+						render();
 						
-						//according to ring orientation from central to outer rings
-						//accounts for planets earth sized an above
-						Object_81 = sun 
-						Object_13 = orange planet, earth sized from center
-						Object_17 = earth
-						Object_25 = next planet from center
-						Object_29 = next planet from center
-						Object_36 = next planet from center
-						Object_40 = next planet from center (last planet blue)
-					*/
-				}
+						var objectName = intersects[ 0 ]["object"]["userData"]["name"]; //extracted by observing intersects[ 0 ] variable, to get location of god's hand obj id etc
 
+						//console.log( 'Intersection:', intersects[ 0 ] );
+						console.log( 'Intersection:', objectName );
+						console.log( 'intersects[ 0 ]:', intersects[ 0 ] );
+						
+						//console.log( "obj_uData >>" + intersects[ 0 ]["object"]["userData"]);
+					}
+				}
+				
+					/*Keys
+						Object_2 HeadLights
+						Object_3 Wheels
+						Object_5 Windshield
+						Object_6 Rear Body panel
+						Object_14 Bonnet Strip
+						Object_15 SideMirror iAntennae (insect Anteanea)
+						Object_16 Body
+						Object_17 under Body
+					*/
+
+			}		
+			
+			setTimeout(enableIAntenaeBloom, 2000);
+			function enableIAntenaeBloom ( )
+			{
+				scene.traverse(function(child) 
+					{
+						if (child instanceof THREE.Mesh && child.name === 'Object_15') {
+							child.layers.toggle(BLOOM_SCENE);
+						}
+					}
+				);		
 			}
-			function detectGltfHover( event ) {
+			
+			
+			//setupSphereGalaxyScene();
+			function setupSphereGalaxyScene() {
 
-				event.preventDefault();
+				//scene.traverse( disposeMaterial );
+				//scene.children.length = 0;
 
-				mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
-				mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
+				const geometry = new THREE.IcosahedronGeometry( 1, 15 );
 
-				raycaster.setFromCamera( mouse, camera );
+				for ( let i = 0; i < 50; i ++ ) {
 
-				var intersects = raycaster.intersectObjects( scene.children, true );
-
-				if ( intersects.length > 0 ) {
-					var objectName = intersects[ 0 ]["object"]["userData"]["name"]; //extracted by observing intersects[ 0 ] variable, to get location of god's hand obj id etc
+					const color = new THREE.Color();
 					
-					//console.log( 'Intersection:', intersects[ 0 ] );
-					if(objectName == "Object_2")
-					{
-						showUiComponent(uiComponents[0]);
-					}					
-					if((objectName == "Object_81")||(objectName == ""))
-					{
-						showUiComponent(uiComponents[1]);
-					}
-					if(objectName == "Object_17")
-					{
-						showUiComponent(uiComponents[4]);
-					}
-					if(objectName == "Object_25")
-					{
-						showUiComponent(uiComponents[2]);
-					}	
-					if(objectName == "Object_29")
-					{
-						showUiComponent(uiComponents[3]);
-					}	
-					if(objectName == "Object_36")
-					{
-						showUiComponent(uiComponents[4]);
-					}	
-					if(objectName == "Object_40")
-					{
-						showUiComponent(uiComponents[1]);
-					}							
+					const sphere = new THREE.Mesh( geometry );
+					sphere.position.x = Math.random() * 12 - 5;
+					sphere.position.y = Math.random() * 10 - 5;
+					sphere.position.z = Math.random() * 10 - 5;
+					sphere.position.normalize().multiplyScalar( Math.random() * 4.0 + 2.0 );
+					sphere.scale.setScalar( Math.random() * Math.random() + 0.5 );
+					scene.add( sphere );
+
+					if ( Math.random() < 0.25 ) sphere.layers.enable( BLOOM_SCENE );
+
 				}
-				else
-				{
-					disableAllUiComponents();
-				}
-				
-				
-					/*Keys
-						Object_2 = god's hand
-						
-						//according to ring orientation from central to outer rings
-						//accounts for planets earth sized an above
-						Object_81 = sun 
-						Object_13 = orange planet, earth sized from center
-						Object_17 = earth
-						Object_25 = next planet from center
-						Object_29 = next planet from center
-						Object_36 = next planet from center
-						Object_40 = next planet from center (last planet blue)
-					*/
-			}			
+
+				render();
+
+			}		
+
 			function controlCam( deltaTime) {
 
 				// gives a bit of air control
@@ -362,7 +424,9 @@
 				
 				requestAnimationFrame( animate );
 				
-				const droneDelta = clock.getDelta() * 12;
+				const droneDelta = clock.getDelta() * 3;
+				
+				//console.log("droneDelta >>" + droneDelta);
 				
 				droneMixer.update( droneDelta );
 			}
@@ -377,8 +441,46 @@
 					controlCam( deltaTime );
 				}		
 				renderer.render( scene, camera );
+	
+				scene.traverse( darkenNonBloomed );
+				bloomComposer.render();
+				scene.traverse( restoreMaterial );
+
+				// render the entire scene, then render bloom scene on top
+				finalComposer.render();	
 			}
-			
+			function darkenNonBloomed( obj ) {
+
+				if ( obj.isMesh && bloomLayer.test( obj.layers ) === false ) {
+
+					materials[ obj.uuid ] = obj.material;
+					obj.material = darkMaterial;
+
+				}
+
+			}
+
+			function disposeMaterial( obj ) {
+
+				if ( obj.material ) {
+
+					obj.material.dispose();
+
+				}
+
+			}
+
+			function restoreMaterial( obj ) {
+
+				if ( materials[ obj.uuid ] ) {
+
+					obj.material = materials[ obj.uuid ];
+					delete materials[ obj.uuid ];
+
+				}
+
+			}
+
 		</script>
 	</body>
 </html>
