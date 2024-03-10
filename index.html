@@ -157,12 +157,14 @@
 				//window.addEventListener( 'pointerdown', onPointerDown );
 				
 				
-				var hdrArray = [ 'castel_st_angelo_roof_4k - like', 'modern_buildings_2_4k', 'schadowplatz_4k -like'];
+				var hdrArray = [ 'castel_st_angelo_roof_4k - like', 'modern_buildings_2_4k', 'schadowplatz_4k -like', 'rathaus_4k', 'modern_buildings_night_4k', 'st_peters_square_night_4k', 'courtyard_night_4k', 'winter_evening_4k','zwinger_night_4k', 'shanghai_bund_4k'];
 				var MAX_HDRS = hdrArray.length - 1;
 				var MIN_HDRS = 0;
 				var randomHdrIndex = Math.floor(Math.random() * (MAX_HDRS - MIN_HDRS + 1)) + MIN_HDRS;
 				var randomHdrIndex = randomHdrIndex!= null ? randomHdrIndex : 1;
-				var randomHdr = hdrArray [2];
+				var randomHdr = hdrArray [6];
+
+
 
 
 			
@@ -230,8 +232,11 @@
 				renderer = new THREE.WebGLRenderer( { antialias: true } );
 				renderer.setPixelRatio( window.devicePixelRatio );
 				renderer.setSize( window.innerWidth, window.innerHeight );
-				//renderer.toneMapping = THREE.ACESFilmicToneMapping;
-				renderer.toneMapping = THREE.ReinhardToneMapping;
+				renderer.toneMapping = THREE.ACESFilmicToneMapping;
+				//renderer.toneMapping = THREE.ReinhardToneMapping;
+				//renderer.toneMapping = THREE.LinearToneMapping;
+				//renderer.toneMapping = THREE.Uncharted2ToneMapping;
+				//renderer.toneMapping = THREE.CineonToneMapping;
 			
 				
 			    //Bloom code
@@ -304,9 +309,12 @@
 					const object = intersects[ 0 ]["object"];
 					//I don't want to add bloom to GroundedSkybox, who's name is ""
 					//nor headlights Object_2
-					//nor headlights Object_3
+					//nor seats part 1 Object_3
+					//nor tyres Object_4
 					//nor windshield Object_5
-					//nor windshield Object_6
+					//nor rear body panel Object_6
+					//nor seat cage Object_11
+					//nor seats part 2 Object_13
 					//nor bonnet strip Object_14
 					//nor body Object_16
 					//nor underbody Object_17
@@ -315,8 +323,11 @@
 						   (object.name != "") 
 						&& (object.name != "Object_2")
 						&& (object.name != "Object_3")
+						&& (object.name != "Object_4")
 						&& (object.name != "Object_5")
 						&& (object.name != "Object_6")
+						&& (object.name != "Object_11")
+						&& (object.name != "Object_13")
 						&& (object.name != "Object_14")
 						&& (object.name != "Object_16")
 						&& (object.name != "Object_17")
