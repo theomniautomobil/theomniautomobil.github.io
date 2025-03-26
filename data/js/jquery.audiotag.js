@@ -1,4 +1,4 @@
-//written by God Bennett
+//written by Cosmos Bennett
 
 
 var musicTitles = 
@@ -40,7 +40,7 @@ $(document).ready(function()
 	swal
 	(
 		{
-				title: "",text: "Welcome to The Omni Automobil! Enjoy Automobil Showcase: Dio Lucciola,  Jamaica's 1st self driving car, designed right here in Jamaica, as well as song zelante mattia, 'strings' - God Bennett, TheOmniAutomobil", imageUrl: 'data/images/logoSmall.png', html: true, showCancelButton: false,
+				title: "",text: "Welcome to The Omni Automobil! Enjoy Automobil Showcase: Dio Lucciola,  Jamaica's 1st self driving car, designed right here in Jamaica, as well as song zelante mattia, 'strings' - Cosmos Bennett, TheOmniAutomobil", imageUrl: 'data/images/logoSmall.png', html: true, showCancelButton: false,
 				confirmButtonColor: "#fff",
 				confirmButtonText: 'Go!',
 				cancelButtonText: "",
