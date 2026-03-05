@@ -19,8 +19,8 @@
 		</div>
 		<div id="info">
 			<p> <img src="data/images/logoMain.png" style="padding-top:25%; width:180px; height:180px;"></img> </p> 
-			<p class = 'LargeSegoeFontFace'> Jamaica's 1st self driving car. See <a style="color:#efe0a7;" href = "https://github.com/iCosmosNeuroverse/JETSON_NANO_AI_COMPUTER_2025_GUIDE_AND_CODE/">real life 3d build log</a> or <a href="https://sketchfab.com/3d-models/dio-lucciola-d7c46fb87869459d95c94df2762d7be3">3d model </a>. Dio powers <a style="color:#efe0a7;" href = "https://icognium.github.io">iCognium Neuroverse</a>.  </p> 
-			<p class = 'MediumSegoeFontFace'>Dio Lucciola Automobile 3d Model and Real Car Project by <a style="color: #efe0a7;" href="https://www.facebook.com/iCosmosNeuroverse/" target="_blank" rel="noopener">Cosmos Bennett.</a> Website powered by <a style="color: #efe0a7;" href="https://threejs.org" target="_blank" rel="noopener">threejs</a></p>
+			<p class = 'LargeSegoeFontFace'> Jamaica's 1st self driving car. See <a style="color:#efe0a7;" href = "https://sketchfab.com/3d-models/dio-lucciola-d7c46fb87869459d95c94df2762d7be3">build log</a>. Dio powers <a style="color:#efe0a7;" href = "https://icognium.github.io">iCognium Neuroverse</a>.  </p> 
+			<p class = 'MediumSegoeFontFace'>Dio Lucciola Automobile 3d Model and Real Car Project by <a style="color: #efe0a7;" href="https://www.facebook.com/GodEngineer/" target="_blank" rel="noopener">Cosmos Bennett.</a> Website powered by <a style="color: #efe0a7;" href="https://threejs.org" target="_blank" rel="noopener">threejs</a></p>
 			
 			<p class = 'MediumSegoeFontFace'>Background From </a> by <a style="color: #efe0a7;" href="https://polyhaven.com/" target="_blank" rel="noopener">Polyhaven</a> </p>
 			<link type="text/css" rel="stylesheet" href="style.css" />
@@ -300,6 +300,12 @@
 				raycaster.setFromCamera( mouse, camera );
 
 				var intersects = raycaster.intersectObjects( scene.children, true );
+				
+						var objectName = intersects[ 0 ]["object"]["userData"]["name"]; //extracted by observing intersects[ 0 ] variable, to get location of god's hand obj id etc
+
+						//console.log( 'Intersection:', intersects[ 0 ] );
+						console.log( 'Intersection:', objectName );
+						console.log( 'intersects[ 0 ]:', intersects[ 0 ] );
 
 				if ( intersects.length > 0 ) {
 					const object = intersects[ 0 ]["object"];
@@ -312,7 +318,7 @@
 					//nor seat cage Object_11
 					//nor seats part 2 Object_13
 					//nor bonnet strip Object_14
-					//nor body Object_16
+					//nor body Object_30
 					//nor underbody Object_17
 					if 
 					(
@@ -325,7 +331,7 @@
 						&& (object.name != "Object_11")
 						&& (object.name != "Object_13")
 						&& (object.name != "Object_14")
-						&& (object.name != "Object_16")
+						&& (object.name != "Object_30")
 						&& (object.name != "Object_17")
 					)
 					{
@@ -350,7 +356,7 @@
 						Object_6 Rear Body panel
 						Object_14 Bonnet Strip
 						Object_15 SideMirror iAntennae (insect Anteanea)
-						Object_16 Body
+						Object_30 Body
 						Object_17 under Body
 					*/
 
@@ -361,7 +367,7 @@
 			{
 				scene.traverse(function(child) 
 					{
-						if (child instanceof THREE.Mesh && child.name === 'Object_15') {
+						if (child instanceof THREE.Mesh && child.name === 'Object_16') {
 							child.layers.toggle(BLOOM_SCENE);
 						}
 					}
