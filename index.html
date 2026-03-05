@@ -143,7 +143,7 @@
 				clock = new THREE.Clock();
 
 				camera = new THREE.PerspectiveCamera(
-					22,
+					40,
 					window.innerWidth / window.innerHeight,
 					1,
 					1000
@@ -278,6 +278,7 @@
 				controls.enablePan = false;
 				controls.update();
 
+				//renderer.setPixelRatio(window.devicePixelRatio);
 				document.body.appendChild( renderer.domElement );
 				window.addEventListener( 'resize', onWindowResize );
 				renderer.domElement.addEventListener('click', detectGltfClick, false);
