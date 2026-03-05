@@ -154,13 +154,14 @@
 				mouse = new THREE.Vector2();
 				scene = new THREE.Scene();
 				
-				
-				var hdrArray = [ 'castel_st_angelo_roof_4k - like', 'modern_buildings_2_4k', 'schadowplatz_4k -like', 'rathaus_2k', 'modern_buildings_night_4k', 'st_peters_square_night_4k', 'courtyard_night_4k', 'winter_evening_4k','zwinger_night_4k', 'shanghai_bund_4k'];
+				//6,1,3,9 good contrast (1,9 favourites)
+				var hdrArray = [ 'modern_buildings_2_4k', 'shanghai_bund_4k'];
+				var hdrArrayBackup = [ 'castel_st_angelo_roof_4k - like', 'modern_buildings_2_4k', 'schadowplatz_4k -like', 'rathaus_2k', 'modern_buildings_night_4k', 'st_peters_square_night_4k', 'courtyard_night_4k', 'winter_evening_4k','zwinger_night_4k', 'shanghai_bund_4k'];
 				var MAX_HDRS = hdrArray.length - 1;
 				var MIN_HDRS = 0;
 				var randomHdrIndex = Math.floor(Math.random() * (MAX_HDRS - MIN_HDRS + 1)) + MIN_HDRS;
 				var randomHdrIndex = randomHdrIndex!= null ? randomHdrIndex : 1;
-				var randomHdr = hdrArray [6];
+				var randomHdr = hdrArray [randomHdrIndex];
 
 
 			
