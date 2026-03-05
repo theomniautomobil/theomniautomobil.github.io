@@ -1,13 +1,19 @@
-//written by Cosmos Bennett
+//written by God Bennett
 
 
 var musicTitles = 
 					[ 
+						"matrix_theme_clubbed_to_dh"
+					];
+					
+var musicTitlesBackup = 
+					[ 
+						"matrix_theme_clubbed_to_dh",
 						"Requiem_Oleg_Semenov",
 						"Neoclassical_Oleg_Semenov", 
 						"zelante_mattia_strings"
 					];
-
+					
 var AUDIOTAGJS_AMBIENT_AUDIO = document.createElement('audio'); //needs to be global, so as to be controllable outside and beyond
 var RANDOM_STARTUP_TITLE;
 var USER_GESTURE_FLAG = false;
@@ -20,7 +26,9 @@ $(document).ready(function()
 	//establish employme voice welcome element
 	var randInd =  getRandomValueBasedOnArraySize ( musicTitles );
 	console.log ( "randInd>>> " +  randInd );
-	RANDOM_STARTUP_TITLE = musicTitles [ randInd ];
+	//RANDOM_STARTUP_TITLE = musicTitles [ randInd ];
+	RANDOM_STARTUP_TITLE = musicTitles [ 0 ];
+	console.log( "RANDOM_STARTUP_TITLE >> " + RANDOM_STARTUP_TITLE);
 	AUDIOTAGJS_AMBIENT_AUDIO.setAttribute('src', 'data/audios/'+ RANDOM_STARTUP_TITLE + '.mp3' );
 	AUDIOTAGJS_AMBIENT_AUDIO.load();
 	AUDIOTAGJS_AMBIENT_AUDIO.addEventListener("load", function() { 
